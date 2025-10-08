@@ -11,7 +11,7 @@
 /* Exported Functions */
 #let osr(
   it,
-  header : ("DND", "OSR"),
+  header : [],
   heading-font : "Noto Serif CJK SC",
   indent : 2em
 ) = {
@@ -23,18 +23,33 @@
       let i = current_page()
       marginalia.header(
         even: (
-          align(left, header.first()),
+          [],
           align(center, hydra(2)),
-          align(left, [#i]),
+          [],
         ),
         odd: (
-          align(right, [#i]),
+          [],
           align(center, hydra(2)),
-          align(right, header.at(1)),
+          [],
         )
       )
     },
     header-ascent: 10mm,
+    footer: context {
+      let i = current_page()
+      marginalia.header(
+        even: (
+          align(left, [#i]),
+          align(center, header),
+          [],
+        ),
+        odd: (
+          [],
+          align(center, header),
+          align(right, [#i]),
+        )
+      )
+    },
     binding: left,
   )
   
@@ -62,9 +77,10 @@
   show heading.where(level: 1) : h => {
     set text(
       font: heading-font,
-      weight: "extrabold"
+      weight: "extrabold",
+      size: 18pt
     )
-    v(0.3em)
+    pagebreak()
     align(center, h.body)
     v(0.3em)
   }
@@ -72,7 +88,8 @@
   show heading.where(level: 2) : h => {
     set text(
       font: heading-font,
-      weight: "extrabold"
+      weight: "extrabold",
+      size: 16pt
     )
     v(0.3em)
     align(center, h.body)
@@ -82,7 +99,8 @@
   show heading.where(level: 3): h => {
     set text(
       font: heading-font,
-      weight: "extrabold"
+      weight: "bold",
+      size: 12pt
     )
     set par(
       first-line-indent: 0pt
@@ -164,7 +182,8 @@
 #let front_pages(..it) = {
   set page(
     numbering: "I",
-    header: none
+    header: none,
+    footer: none
   )
   for p in it.pos() {
     vanilla_page(p)
@@ -176,14 +195,13 @@
   counter(page).update(1)
 }
 
-#let floating_widetable(t, caption : none) = {
+#let floating_widefigure(t, caption : none) = {
   place(
-    top + center, 
+    bottom + center, 
     float: true, 
     wideblock(
       side: "both",
       figure(
-        kind: table,
         caption: caption,
         t
       )
@@ -192,7 +210,8 @@
 }
 
 #let note = note.with(
-  numbering: (..i) => super(numbering("a", ..i)),
+  numbering: (..i) => super(baseline: -1em, numbering("1", ..i)),
+  anchor-numbering: (..i) => super(baseline: -1em, numbering("1", ..i)),
   par-style: (
     justify: true,
     first-line-indent: (
@@ -202,12 +221,14 @@
   ),
   text-style: (
     weight: "light"
-  )
+  ),
+  keep-order: true,
 )
 
 #let notefigure = notefigure.with(
-  numbering: (..i) => super(numbering("a", ..i)),
+  numbering: none,
   anchor-numbering: none,
+  counter: none,
   show-caption: (number, caption) => {
     number
     caption.body
@@ -226,6 +247,7 @@
 
 #let annotated_note = note.with(
   numbering: none,
+  anchor-numbering: none
 )
 
 #let boxed(it) = {
@@ -242,4 +264,33 @@
     // fill: rgb("#dcdddd43"),
     inset: 1em,
   ))
+}
+
+#let thickline() = {
+    line(
+      stroke: (
+        paint: black,
+        thickness: 1pt,
+      ),
+      length: 100%
+    )
+}
+
+#let stat(it) = {
+  show regex("AC|HD|hp|豁免|移动|攻击次数|伤害|士气|阵营|力量|智力|睿知|敏捷|体质|魅力|法术|TT|NA"): strong.with(delta: 220)
+  stack(
+    dir: ttb,
+    spacing: 0.4em,
+    thickline(),
+    it,
+    thickline(),
+  )
+}
+
+#let sidestat(it) = {
+  note(
+    // numbering: (..i) => numbering("1", ..i),
+    // anchor-numbering: (..i) => super(baseline: -1em, numbering("1", ..i)),
+    stat(it)
+  )
 }
