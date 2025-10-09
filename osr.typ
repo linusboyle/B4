@@ -1,5 +1,6 @@
 #import "@preview/marginalia:0.2.3" as marginalia: note, notefigure, wideblock
 #import "@preview/hydra:0.6.2": hydra
+#import "@preview/cuti:0.3.0": cn-fakebold
 
 /* Internal Utilities */
 
@@ -12,9 +13,11 @@
 #let osr(
   it,
   header : [],
+  latin-fallback-font: "Jetbrains Mono",
   heading-font : "Noto Serif CJK SC",
   indent : 2em
 ) = {
+  let latin-fallback = (name: latin-fallback-font, covers: "latin-in-cjk")
   /* Basic Styling for Main Content */
   set page(
     paper: "a4",
@@ -66,7 +69,7 @@
 
   set text(
     font: (
-      (name: "Sarasa Term SC", covers: "latin-in-cjk"),
+      latin-fallback,
       "Noto Sans CJK SC",
     ),
     weight: "light",
@@ -142,6 +145,17 @@
   //   shift: "avoid",
   //   keep-order: true
   // )
+  // show emph: it => {
+  //   set text(
+  //     font: (
+  //       latin-fallback,
+  //       "Huiwen-Mincho",
+  //     ),
+  //     // fill: rgb("#6f6d6d")
+  //   )
+  //   // cn-fakebold(it)
+  //   it
+  // }
 
   /* Table Styling */
   show table.cell.where(y: 0): set text(weight: "medium")
