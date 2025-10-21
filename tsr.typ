@@ -1,26 +1,25 @@
 #import "@preview/marginalia:0.2.3" as marginalia: note, notefigure, wideblock
 #import "@preview/hydra:0.6.2": hydra
 #import "@preview/cuti:0.3.0": cn-fakebold
+#import "common.typ" : *
 
-/* Internal Utilities */
+/* TSR老模组 */
 
-/* This is the logical page */
-#let current_page() = counter(page).at(here()).first()
-
-#let current_physical_page() = here().position().page
-
-/* Exported Functions */
-#let osr(
+/* Exported Theme */
+#let tsr(
   it,
   header : [],
   latin-fallback-font: "Jetbrains Mono",
   heading-font : "Noto Serif CJK SC",
-  indent : 2em
+  indent : 2em,
+  inner-width: 1cm,
+  outer-width: 5cm,
+  paper: "a4"
 ) = {
   let latin-fallback = (name: latin-fallback-font, covers: "latin-in-cjk")
   /* Basic Styling for Main Content */
   set page(
-    paper: "a4",
+    paper: paper,
 
     header: context {
       let i = current_page()
@@ -172,21 +171,22 @@
   marginalia.setup(
     book: true,
     inner: (
-      width: 1cm,
+      width: inner-width,
     ),
     outer: (
-      width: 5cm,
+      width: outer-width,
     ),
   )[#it]
 }
 
-#let vanilla_page(it) = {
+#let vanilla_page(it, ..extra) = {
   set page(
     footer: none,
     header: none,
     margin: (
-      x: 10%
-    )
+      x: auto
+    ),
+    ..extra
   )
   [
     #it
@@ -263,22 +263,6 @@
   numbering: none,
   anchor-numbering: none
 )
-
-#let boxed(it) = {
-  set text(
-    size: 11pt
-  )
-  pad(0.3em, block(
-    it,
-    width: 100%,
-    stroke: (
-      paint: black,
-      thickness: 0.8pt,
-    ),
-    // fill: rgb("#dcdddd43"),
-    inset: 1em,
-  ))
-}
 
 #let thickline() = {
     line(
