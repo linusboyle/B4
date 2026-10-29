@@ -1,4 +1,4 @@
-#import "../themes/sd.typ" : *
+#import "../../themes/sd.typ" : *
 #import "@preview/ccicons:1.0.1": *
 
 #let version = version(1, 3, 0)
@@ -19,7 +19,7 @@
 ]
 
 #set page(
-  background: image("images/Shadowdark/sd-title.pdf"),
+  background: image("images/sd-title.pdf"),
   fill: black
 )
 
@@ -12358,7 +12358,7 @@ caption: [人格特质],
 <角色卡>
 ]
 
-#rotate(270deg, image("images/Shadowdark/Shadowdark 可填写PDF中文角色卡.pdf"), reflow: true)
+#rotate(270deg, image("images/Shadowdark 可填写PDF中文角色卡.pdf"), reflow: true)
 
 ]
 #set text(lang: "en")

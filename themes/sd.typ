@@ -309,7 +309,7 @@
 //       gutter: 0pt,
 //       rows: (quote_height + 10pt, 0pt),
 
-//       image("images/Shadowdark/shadowdark-022.png", width: 100%, height: quote_height + 10pt),
+//       image("images/shadowdark-022.png", width: 100%, height: quote_height + 10pt),
 //       // it,
 //       text(fill: white, it, baseline: -5pt),
 //     )

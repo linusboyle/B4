@@ -1,4 +1,4 @@
-#import "../themes/sourcebook.typ" : *
+#import "../../themes/sourcebook.typ" : *
 #import "@preview/ccicons:1.0.1": *
 
 #let version = "0.4"
@@ -23,7 +23,7 @@
 <封面>
 
 #set page(
-  background: image("images/GAZ1/cover.png"),
+  background: image("images/cover.png"),
   fill: rgb("#1E1317"),
 )
 
@@ -922,7 +922,7 @@ DM不应让玩家为同一任务反复投骰——仅应在游戏关键时刻进
 
 现在，主动权掌握在地下城主手中。他应当花些时间审视每个角色，创建角色熟识的NPC——包括家人、亲友与仇敌、雇主等，设计玩家角色集结成冒险队伍的方式，并引导这支团队踏上冒险征程。
 
-#floating_bottom(image("images/GAZ1/Tavern Small.jpg"))<TavernSmall>
+#floating_bottom(image("images/Tavern Small.jpg"))<TavernSmall>
 
 = 卡拉梅科斯的历史
 <卡拉梅科斯的历史>
@@ -1285,7 +1285,7 @@ DM可安排一名或多名玩家角色出席接见会（更多关于公开法庭
 <政治与经济>
 最后，卡拉梅科斯政治的一个重要组成部分涉及金钱的流动。因此，“卡拉梅科斯经济”拥有独立章节，紧接在“卡拉梅科斯社会”之后。
 
-#floating_bottom(image("images/GAZ1/Tavern Large.jpg"))<TavernLarge>
+#floating_bottom(image("images/Tavern Large.jpg"))<TavernLarge>
 
 = 卡拉梅科斯社会
 <卡拉梅科斯社会>
@@ -2183,7 +2183,7 @@ g.p.）
 
 卓拉达菈教会的正装为一件长袖及膝罩袍，染有与该教会相关联的棕色。教会牧师手持多节木杖（亦称权杖），象征其神职身份。
 
-#floating_bottom(image("images/GAZ1/Symbols.jpg"))
+#floating_bottom(image("images/Symbols.jpg"))
 === 冒险装扮
 <冒险装扮>
 冒险者大体上穿着平民的服装——尽管衣料可能价格不菲。
@@ -2571,7 +2571,7 @@ figure(
 
 地图上未标注众多小型河流。出于情节或故事需要，你可在任意位置添加溪流河川。可以确定的是，任何未坐落于大河之畔的城镇聚落，附近必然存在小型水体。
 
-#floating_bottom(image("images/GAZ1/Manor House.jpg"))<Manor>
+#floating_bottom(image("images/Manor House.jpg"))<Manor>
 == 其他地质特征
 <其他地质特征>
 === 金属
@@ -2853,7 +2853,7 @@ figure(
 
 - 鲁加洛夫堡。这座东部堡垒警戒着可能来自色亚提斯的行动。其驻军为第四师团，鲁加洛夫卫戍营（绰号“哈拉夫之剑”，主要由卓拉达菈人组成）。
 
-#floating_bottom(image("images/GAZ1/Keep.jpg"))<Keep>
+#floating_bottom(image("images/Keep.jpg"))<Keep>
 
 == 怪诞场所
 <怪诞场所>
@@ -2911,8 +2911,8 @@ DM指南：在基础级冒险中，公爵将是角色们有所耳闻但从未谋
 12；阵营 守序；力量 16 智力 13 睿知 15 敏捷 16 体质 14 魅力
 17。掌握语言包括色亚提斯语、阵营语（守序）和卓拉达菈语。通用技能含骑乘（敏捷）、说服（魅力）、政府学（智力）、法典与司法制度（睿知）、军事战术知识+1（智力+1）、航海术（智力）及追踪（智力）。
 
-#floating_bottom(image("images/GAZ1/32980681693900b7022f65ff8aef0facafa8d08dab0f60c0f283185f41e72166.jpg"))
-// #image("images/GAZ1/32980681693900b7022f65ff8aef0facafa8d08dab0f60c0f283185f41e72166.jpg")
+#floating_bottom(image("images/32980681693900b7022f65ff8aef0facafa8d08dab0f60c0f283185f41e72166.jpg"))
+// #image("images/32980681693900b7022f65ff8aef0facafa8d08dab0f60c0f283185f41e72166.jpg")
 
 ==== 奥利维亚・卡拉梅科斯公爵夫人
 <奥利维亚卡拉梅科斯公爵夫人>
@@ -3011,7 +3011,7 @@ DM指南：众所周知，若卓拉达菈人对官员有正当的不满，亚罗
 11 体质 12 魅力
 10。语言：卓拉达菈语、阵营语（守序）、色亚提斯语。通用技能：情报收集技巧知识+1（智力+9）、时事评估职业（智力）、色亚提斯社会知识+1（智力+1）、卓拉达菈历史与传说知识（智力）。
 
-#floating_bottom(image("images/GAZ1/2f6ffa001bf7b01a0f1ada0eeaa5936aaefe1d83f67c11c6f7aa89b036267bf5.jpg"))
+#floating_bottom(image("images/2f6ffa001bf7b01a0f1ada0eeaa5936aaefe1d83f67c11c6f7aa89b036267bf5.jpg"))
 
 ==== 卢修斯・海拉克索斯上将
 <卢修斯海拉克索斯上将>
@@ -3096,7 +3096,7 @@ DM指南：奥斯特里克是角色们可能意外撞到或泼酒在他身上的
 
 外貌：玛丽亚尼塔的家族混有精灵与人类的血统；虽然她严格来说属于人类，但五官带有明显的精灵特征。她看似二十出头，但（鉴于其魔法造诣的深厚）实际年龄可能更大，依靠长寿药水维持青春。她身材娇小（5\'整，约100磅），长及腰际的乌黑直发，墨色大眼睛，五官精致，双耳微尖。身着格兰特里风格的华服，色彩鲜艳，常配繁复头饰与华丽饰品。手持象牙雕花折扇，用以配合言谈手势、辅助调情、吸引目光，偶尔纳凉。指间戴满戒指，周身缀满珠宝。
 
-#floating_bottom(image("images/GAZ1/6281c42e9eb307dda3d4596acc924ccf31cff901cbcafe9e22e74d8c6ec1d4bf.jpg"))
+#floating_bottom(image("images/6281c42e9eb307dda3d4596acc924ccf31cff901cbcafe9e22e74d8c6ec1d4bf.jpg"))
 
 DM指南：鉴于她的显眼程度，角色们在宫廷时必定会见到玛丽亚尼塔女士。在他们成为“人物”之前——即达到名人经验等级或作为强大冒险者建立声望前——她不会留意他们。但当他们声名显赫时，她会注意到他们，或许会对团队中魅力最高的男性产生兴趣。此外，由于法师公会会长知晓她是位造诣深厚的魔法师，可能在无法解答魔法问题时让角色们去请教她。当然，角色必须格外有说服力或吸引力才能说服她相助，若想成为她的学徒，则需要更具魅力。
 
@@ -3237,7 +3237,7 @@ DM指南：阿卜杜拉现在多了一项额外任务：他对格兰特里大使
 中立；力量 18 智力 13 睿知 9 敏捷 18 体质 13 魅力
 15。语言：阿拉斯扬语、阵营语（中立）、色亚提斯语。通用技能：骑乘（敏捷）、沙漠生存+2（智力+2）、沙漠骑兵战术知识（智力）、酋长国知识（智力）、说服（魅力）、叙事（魅力）。
 
-#floating_bottom(image("images/GAZ1/25d0575ad3d9b696aa8b6ddf1f5cffb83225f525ca98c91b086a1db9bd6cbfcb.jpg"))
+#floating_bottom(image("images/25d0575ad3d9b696aa8b6ddf1f5cffb83225f525ca98c91b086a1db9bd6cbfcb.jpg"))
 
 ==== 埃斯特兰・怀特霍尔
 <埃斯特兰怀特霍尔>
@@ -3331,7 +3331,7 @@ DM指南：奥德布里是一个等待引爆的火药桶（或剧情装置）。
 活化尸体，驱散魔法，防护邪恶 10\'半径。 第五级 - 通神，使命，复活死者。
 第六级 - 怪物交谈，回返真言。
 
-#floating_bottom(image("images/GAZ1/2aa18a6e3054656489b4c8a026a07f93bf3dece3ca1232c39ada96dc20793c7b.jpg"))
+#floating_bottom(image("images/2aa18a6e3054656489b4c8a026a07f93bf3dece3ca1232c39ada96dc20793c7b.jpg"))
 
 ==== 阿列克谢耶夫・尼克尔涅维奇
 <阿列克谢耶夫尼克尔涅维奇>
@@ -3488,7 +3488,7 @@ DM指南：涉及蒙纱社群的冒险在“冒险”章节中有所提及。注
 10；阵营N；力量 14 智力 16 睿知 11 敏捷 17 体质 14 魅力
 15。语言：卓拉达菈语、阵营语（中立）、色亚提斯语、精灵语（卡拉里）。通用技能：蒙纱社群知识（智力）、镜影城社会知识（智力）、镜影城知识（智力）、骑乘（敏捷）、说服（魅力）、刑讯审问技巧知识（智力）、金融知识（智力）、行商职业+1（智力+1）。
 
-#floating_bottom(image("images/GAZ1/d601add63d7afdadec621f25558770fea3006d8253018fd32d3b77c6c9bc274d.jpg"))
+#floating_bottom(image("images/d601add63d7afdadec621f25558770fea3006d8253018fd32d3b77c6c9bc274d.jpg"))
 
 ==== 精英蒙纱社群暴徒
 <精英蒙纱社群暴徒>
@@ -3573,7 +3573,7 @@ DM指南：角色们每次造访镜影城时都可能遇见约兰达；她可能
 10 敏捷 18 体质 10 魅力
 17。语言：特拉达兰语、阵营语（中立）、色亚提斯语、精灵语（卡拉里）。通用技能：歌唱+1（魅力+1）、舞蹈（敏捷）、说服+1（魅力+1）。
 
-#floating_bottom(image("images/GAZ1/5dd438c9b0744eb6b4c90b106f2089f73a22838f286843f4322fe80ac0632624.jpg"))
+#floating_bottom(image("images/5dd438c9b0744eb6b4c90b106f2089f73a22838f286843f4322fe80ac0632624.jpg"))
 
 ==== 迪米特里奥斯“老爷”
 <迪米特里奥斯老爷>
@@ -3708,7 +3708,7 @@ DM指南：角色们很可能在阈限镇遇见阿丽娜，因为她常为叔父
 
 DM指南：哈莉娅和她的丈夫是中级角色在阈限镇区域可用的得力盟友。她们与阿丽娜和谢尔兰交好，且是公爵的坚定支持者。他们会为因夜幕降临而未能抵达阈限镇的旅人提供庇护；会在力所能及时提供建议和专业帮助；甚至愿意陪同角色（参与专家级及以上冒险任务者）进行特别重要的冒险。
 
-#floating_bottom(image("images/GAZ1/5aa9135061fce989c6ab9b9591feaafb9facda5447c338f8273ad5f96fd23648.jpg"))
+#floating_bottom(image("images/5aa9135061fce989c6ab9b9591feaafb9facda5447c338f8273ad5f96fd23648.jpg"))
 
 战斗说明：7级魔法师；AC 9；hp 26；移动 120\'（40\'）；攻击次数
 1（匕首）；伤害 1-4；豁免 M7；士气 10；阵营 守序；力量 8 智力 18 睿知 13
@@ -3762,7 +3762,7 @@ DM指南：黑鹰男爵是可用于多种场景的典型反派角色。“冒险
 15 睿知 9 敏捷 14 体质 16 魅力
 14。语言：色亚提斯语、阵营语（混乱）、兽人语。通用技能：刑讯知识（智力）、骑术+1（敏捷+1）、黑鹰男爵领知识+2（智力+2）、军事战术（智力）。
 
-#floating_bottom(image("images/GAZ1/933a48e9886456be4a499bc4b72037829631f02616e1686948e84cbb55208b18.jpg"))
+#floating_bottom(image("images/933a48e9886456be4a499bc4b72037829631f02616e1686948e84cbb55208b18.jpg"))
 
 ==== 恶名昭彰的巴格尔
 <恶名昭彰的巴格尔>
@@ -4226,7 +4226,7 @@ HD：7-9\*\*
 
 
   // for i in range(1, 10) {
-  //   full_page_figure("/source/images/GAZ1/map-" + str(i) + ".png")
+  //   full_page_figure("images/map-" + str(i) + ".png")
   // }
 }
 
