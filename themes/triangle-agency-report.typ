@@ -59,10 +59,10 @@
 
 #let ta-h2(it) = block(
   width: 100%,
-  above: 0.4em,
-  below: 0.72em,
+  above: 0.9em,
+  below: 0.85em,
   stroke: (bottom: 0.6pt + ta-red),
-  inset: (bottom: 1.6mm),
+  inset: (bottom: 1.8mm),
 )[
   #grid(columns: (auto, 1fr), gutter: 2.6mm, align: horizon)[
     #box(baseline: 12%, ta-triangle(size: 6.6pt))
@@ -106,8 +106,6 @@
   status: "已归档",
   // 可选：嘉奖合计，例如 "+7"
   reward-total: none,
-  // 是否在正文后保留手写备注区
-  notes: true,
   // 正文
   body,
 ) = {
@@ -176,14 +174,14 @@
     // vertical running head
     place(
       top + right,
-      dx: 0mm,
-      dy: 0mm,
-      box(width: 9mm, height: 100%, align(center + horizon, rotate(-90deg, text(
+      dx: 0.9mm,
+      dy: 50%,
+      rotate(-90deg, text(
         fill: white,
         font: ta-body-font,
         size: 6.4pt,
         tracking: 1.8pt,
-      )[外勤报告  /  FIELD REPORT]))),
+      )[外勤报告]),
     )
     // white triangle at the foot of the strip
     place(
@@ -224,14 +222,14 @@
   set text(
     font: ta-body-font,
     weight: ta-body-weight,
-    size: 10.2pt,
+    size: 10.4pt,
     fill: ta-ink,
     lang: "zh",
     hyphenate: false,
   )
   set par(
-    leading: 0.72em,
-    spacing: 0.9em,
+    leading: 0.82em,
+    spacing: 1.15em,
     justify: true,
     linebreaks: "optimized",
     first-line-indent: 0pt,
@@ -243,10 +241,10 @@
   set list(
     indent: 0.8em,
     body-indent: 0.55em,
-    spacing: 0.5em,
+    spacing: 0.65em,
     marker: box(baseline: 18%, ta-triangle(size: 4.2pt)),
   )
-  show list: set par(justify: false, spacing: 0.35em)
+  show list: set par(justify: false, spacing: 0.5em)
 
   // Layout ---------------------------------------------------------------
   [
@@ -349,8 +347,8 @@
 
     // Metadata + body ----------------------------------------------------
     #grid(
-      columns: (37mm, 1fr),
-      gutter: 8mm,
+      columns: (35mm, 1fr),
+      gutter: 7mm,
       align: top,
       block(
         width: 100%,
@@ -364,7 +362,7 @@
           size: 6.3pt,
           fill: ta-red,
           tracking: 1.2pt,
-        )[档案信息 / FILE INFO]
+        )[档案信息 / FILE]
         #v(1.2mm)
         #line(length: 100%, stroke: 0.6pt + ta-red)
 
@@ -386,7 +384,7 @@
             #grid(
               columns: (1fr, auto),
               align: horizon,
-              text(fill: white, font: ta-body-font, size: 6.2pt, tracking: 0.5pt)[嘉奖合计 / TOTAL],
+              text(fill: white, font: ta-body-font, size: 6.2pt, tracking: 0.5pt)[嘉奖],
               text(fill: white, font: ta-head-font, weight: ta-head-weight, size: 14pt)[#reward-total],
             )
           ]
@@ -413,7 +411,7 @@
                 font: ta-body-font,
                 size: 5.8pt,
                 tracking: 0.9pt,
-              )[TRIANGLE AGENCY · FILED]
+              )[FILED]
             ],
           )
         ]
@@ -425,35 +423,5 @@
         #body
       ],
     )
-
-    #if notes [
-      #v(5mm)
-      #block(
-        width: 100%,
-        fill: ta-rose-soft,
-        stroke: 0.8pt + ta-red,
-        radius: 2mm,
-        inset: (x: 4mm, y: 3mm),
-      )[
-        #grid(
-          columns: (auto, 1fr),
-          gutter: 3mm,
-          align: horizon,
-          text(
-            fill: ta-red,
-            font: ta-body-font,
-            size: 6.3pt,
-            tracking: 0.8pt,
-          )[备注 / NOTES],
-          line(length: 100%, stroke: 0.5pt + ta-red.transparentize(65%)),
-        )
-        #v(6.5mm)
-        #line(length: 100%, stroke: 0.5pt + ta-red.transparentize(78%))
-        #v(6.5mm)
-        #line(length: 100%, stroke: 0.5pt + ta-red.transparentize(78%))
-        #v(6.5mm)
-        #line(length: 100%, stroke: 0.5pt + ta-red.transparentize(78%))
-      ]
-    ]
   ]
 }
