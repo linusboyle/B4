@@ -56,3 +56,43 @@
     )
   ]
 }
+
+#let floating_bottom(it) = {
+  place(bottom + center, float: true, scope: "parent", it)
+}
+
+#let floating_top(it) = {
+  place(top + center, float: true, scope: "parent", it)
+}
+
+#let page_ref(label) = context {
+  let loc = locate(label)
+  let page = counter(page).at(loc).at(0)
+  let display = "第"+str(page)+"页"
+  link(label, display)
+}
+
+#let full_width_table(it, ..opts) = {
+  floating_bottom(figure(it, kind: table, ..opts))
+}
+
+#let full_width_table_top(it, ..opts) = {
+  floating_top(figure(it, kind: table, ..opts))
+}
+
+#let stand_alone_table(it, ..opts) = {
+  pagebreak(weak: true)
+  set page(columns: 1)
+  place(center + horizon, figure(it, kind: table, ..opts))
+  pagebreak(weak: true)
+}
+
+#let invisible_heading(it) = {
+  show heading: none
+  it
+}
+
+#let single_column_table(it, ..opts) = {
+  set page(columns: 1)
+  figure(it, kind: table, ..opts)
+}

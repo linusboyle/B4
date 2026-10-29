@@ -1,28 +1,36 @@
 #import "@preview/marginalia:0.2.3" as marginalia: note, notefigure, wideblock
 #import "@preview/hydra:0.6.2": hydra
 #import "@preview/cuti:0.3.0": cn-fakebold
-#import "common.typ" : *
+#import "../libs/common.typ" : *
+#import "../libs/components.typ" : *
 
-/* TSR老模组 */
+
+/* 常规资料书籍 */
 
 /* Exported Theme */
-#let tsr(
+#let sourcebook(
   it,
   header : [],
-  latin-fallback-font: "Jetbrains Mono",
+  latin-fallback-font: "IBM Plex Sans",
   heading-font : "Noto Serif CJK SC",
   indent : 2em,
-  inner-width: 1cm,
-  outer-width: 5cm,
-  paper: "a4"
+  inner-width: 8mm,
+  outer-width: 8mm,
+  paper: "a5"
 ) = {
   let latin-fallback = (name: latin-fallback-font, covers: "latin-in-cjk")
+
   /* Basic Styling for Main Content */
   set page(
     paper: paper,
+    numbering: "1",
+
+    columns: 2,
+
+    header-ascent: 5mm,
+    footer-descent: 5mm,
 
     header: context {
-      let i = current_page()
       marginalia.header(
         even: (
           [],
@@ -36,20 +44,12 @@
         )
       )
     },
-    header-ascent: 10mm,
     footer: context {
       let i = current_page()
       marginalia.header(
-        even: (
-          align(left, [#i]),
-          align(center, header),
-          [],
-        ),
-        odd: (
           [],
           align(center, header),
-          align(right, [#i]),
-        )
+          align(center, [#i]),
       )
     },
     binding: left,
@@ -69,10 +69,12 @@
   set text(
     font: (
       latin-fallback,
+      "京華老宋体-GB印通表字形",
       "Noto Sans CJK SC",
+      // "Noto Serif CJK SC"
     ),
-    weight: "light",
-    size: 11pt,
+    // weight: "light",
+    size: 9pt,
     lang: "zh"
   )
 
@@ -82,54 +84,85 @@
       weight: "extrabold",
       size: 18pt
     )
-    pagebreak()
-    align(center, h.body)
-    v(0.3em)
+    set block(
+      stroke: (top: 2pt),
+      inset: (top: 0.8em, bottom: 1em),
+      // width: 100%,
+    )
+    pagebreak(weak: true)
+    h
+    // place(top + left, float: true, scope: "parent", h)
   }
 
   show heading.where(level: 2) : h => {
     set text(
       font: heading-font,
       weight: "extrabold",
-      size: 16pt
+      size: 14pt
+    )
+    set par(
+      first-line-indent: 0pt
     )
     v(0.3em)
-    align(center, h.body)
+    align(left, h.body)
     v(0.3em)
   }
 
   show heading.where(level: 3): h => {
     set text(
-      font: heading-font,
-      weight: "bold",
-      size: 12pt
+      font: "KaiTi",
+      weight: "black",
+      size: 14pt
     )
     set par(
-      first-line-indent: 0pt
+      first-line-indent: 0pt,
     )
     v(0.3em)
-    align(left, h.body)
+    align(center, cn-fakebold(h.body))
     v(0.3em)
   }
 
   show heading.where(level: 4): h => {
     set text(
-      font: heading-font,
-      weight: "extrabold"
+      font: "FZMingShiTiS",
+      weight: "black",
+      size: 11pt,
+    )
+    set par(
+      first-line-indent: 0pt,
+      leading: 0.4em
+    )    
+    v(0.2em)
+    align(left, h)
+    v(0.2em)
+  }
+
+  show heading.where(level: 5): h => {
+    set text(
+      font: "KaiTi",
+      weight: "bold",
     )
     set par(
       first-line-indent: 0pt
     )
-    v(0.3em)
+    v(0.2em)
     align(left, h.body)
-    v(0.3em)
+    v(0.2em)
   }
 
   set enum(
-    indent: indent
+    indent: 1em
   )
+  show enum: it => {
+    set par(
+      first-line-indent: 0pt,
+      leading: 0.8em,
+      spacing: 1.2em
+    )
+    it
+  }
   set list(
-    indent: indent,
+    indent: 1em,
     marker: ([‣], [•])
   )
   set strong(delta: 240)
@@ -167,128 +200,38 @@
     stroke: (_, y) => if y == 0 { (top: 1pt, bottom: 0.7pt) }
   )
 
-
   marginalia.setup(
-    book: true,
+    book: false,
+    top: 1.5cm,
+    bottom: 1.5cm,
     inner: (
+      sep: 0pt,
+      far: 0pt,
       width: inner-width,
     ),
     outer: (
+      sep: 0pt,
+      far: 0pt,
       width: outer-width,
     ),
   )[#it]
-}
-
-#let vanilla_page(it, ..extra) = {
-  set page(
-    footer: none,
-    header: none,
-    margin: (
-      x: auto
-    ),
-    ..extra
-  )
-  [
-    #it
-  ]
 }
 
 #let front_pages(..it) = {
   set page(
     numbering: "I",
     header: none,
-    footer: none
+    footer: none,
+    margin: (
+      y: 5%
+    )
   )
   for p in it.pos() {
     vanilla_page(p)
   }
-  outline()
-  set page(
-    numbering: "1"
+  set text(
+    size: 8pt
   )
-  counter(page).update(1)
-}
-
-#let floating_widefigure(t, caption : none) = {
-  place(
-    bottom + center, 
-    float: true, 
-    wideblock(
-      side: "both",
-      figure(
-        caption: caption,
-        t
-      )
-    )
-  )
-}
-
-#let note = note.with(
-  numbering: (..i) => super(baseline: -1em, numbering("1", ..i)),
-  anchor-numbering: (..i) => super(baseline: -1em, numbering("1", ..i)),
-  par-style: (
-    justify: true,
-    first-line-indent: (
-      amount: 0em,
-      all: true,
-    )
-  ),
-  text-style: (
-    weight: "light"
-  ),
-  keep-order: true,
-)
-
-#let notefigure = notefigure.with(
-  numbering: none,
-  anchor-numbering: none,
-  counter: none,
-  show-caption: (number, caption) => {
-    number
-    caption.body
-  },
-  par-style: (
-    justify: true,
-    first-line-indent: (
-      amount: 0em,
-      all: true,
-    )
-  ),
-  text-style: (
-    weight: "light"
-  )
-)
-
-#let annotated_note = note.with(
-  numbering: none,
-  anchor-numbering: none
-)
-
-#let thickline() = {
-    line(
-      stroke: (
-        paint: black,
-        thickness: 1pt,
-      ),
-      length: 100%
-    )
-}
-
-#let stat(it) = {
-  show regex("AC|HD|hp|豁免|移动|攻击次数|伤害|士气|阵营|力量|智力|睿知|敏捷|体质|魅力|法术|TT|NA"): strong.with(delta: 220)
-  stack(
-    dir: ttb,
-    spacing: 0.4em,
-    thickline(),
-    it,
-    thickline(),
-  )
-}
-
-#let sidestat(it) = {
-  note(
-    // numbering: (..i) => numbering("1", ..i),
-    // anchor-numbering: (..i) => super(baseline: -1em, numbering("1", ..i)),
-    stat(it)
-  )
+  outline(depth: 2)
+  counter(page).update(0)
 }
