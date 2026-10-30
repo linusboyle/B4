@@ -5,6 +5,23 @@
 #let page-margin-bottom = 12mm
 #let page-gutter = 5mm
 
+// Verse / recipe block: soft background, thin frame, unbreakable.
+#let poem(body) = block(
+  width: 100%,
+  fill: luma(243),
+  stroke: 0.7pt + luma(110),
+  radius: 4pt,
+  inset: (x: 0.8em, y: 0.65em),
+  above: 1em,
+  below: 1em,
+  breakable: false,
+  {
+    set text(font: ("LXGW WenKai", "KaiTi"), size: 10.5pt)
+    set par(justify: false, leading: 1.2em, spacing: 0.5em)
+    body
+  },
+)
+
 #let count-body(
   body,
 ) = {
@@ -28,28 +45,23 @@
 
   set text(
     font: ("Noto Sans CJK SC", "Noto Serif"),
-    size: 12pt,
+    size: 11pt,
     lang: "zh",
     region: "cn",
   )
 
   set par(
     justify: true,
-    leading: 1.1em,
-    spacing: 1.1em,
+    leading: 1em,
+    spacing: 1em,
   )
 
-  set list(indent: 0.45em, body-indent: 0.35em, spacing: 1.1em)
-  set enum(indent: 1.1em, body-indent: 0.35em, spacing: 0.55em)
-  set list(marker: ([►], [・]))
-  show list: set par(justify: false)
-  show enum: set par(justify: false)
+  set list(indent: 0em, body-indent: 0.3em, spacing: 1.1em)
+  set list(marker: ([‣], [・]))
+  // show list: set par(justify: false)
 
-  show strong: set text(font: ("Noto Sans CJK SC", "Noto Sans"), weight: "bold")
+  show strong: set text(font: ("TsangerYuMo", "Noto Sans"), weight: 240)
   show emph: set text(font: ("LXGW WenKai", "KaiTi"))
-
-  // Internal references stay clickable, but print in black.
-  show link: set text(fill: black)
 
   show heading: set text(
     font: ("Noto Sans CJK SC", "Noto Sans"),
@@ -70,11 +82,11 @@
   }
 
   show heading.where(level: 3): it => {
-    v(1em, weak: true)
+    v(1.1em, weak: true)
     block(
       width: 80%,
-      above: 0.2em,
-      below: 0.6em,
+      above: 0.3em,
+      below: 0.7em,
       sticky: true,
       stroke: (bottom: 0.5pt),
       inset: (bottom: 0.22em),
@@ -92,8 +104,9 @@
   // Tables: compact, unbreakable, single header rule.
   set table(
     stroke: (x, y) => if y == 0 { (bottom: 0.7pt) } else { none },
+    fill: (_, y) => if calc.odd(y) { luma(235) },
     inset: (x: 0.35em, y: 0.32em),
-    align: (center + top, left + top),
+    align: left + top,
   )
 
   show figure.where(kind: table): set text(size: 10pt)
